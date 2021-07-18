@@ -40,7 +40,7 @@ Book languages [endpoint](https://hermes.books.speechkit.ru/docs#/speech_setting
 
 ### Speakers
 
-This endpoint absolutely open for requests.
+This endpoint requires Auth Token.
 
 List of voices you can use to create books. Your decision will affect the voice of the book.
 
