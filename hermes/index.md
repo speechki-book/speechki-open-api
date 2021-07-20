@@ -152,6 +152,8 @@ This endpoint requires Auth Token.
 
 You can redirect user to that URL or embed an iframe with it. Recommended minimum width for the iframe is 1200px.
 
+`<iframe src="Guest Link" />`
+
 ##### Request Body
 
 comeback_url - Optional field. The service will set the url to which the user can be returned from the Speechki editor.
