@@ -150,6 +150,7 @@ This endpoint requires Auth Token.
 
 [Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/create_guest_link_handler_api_v1_orders_orders__order_id__link__post)
 
+You can redirect user to that URL or embed an iframe with it. Recommended minimum width for the iframe is 1200px.
 
 ##### Request Body
 
