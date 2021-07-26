@@ -207,6 +207,7 @@ Notification request use **POST** method
     },
     "created": "2021-07-14T13:32:48.958Z",
     "modified": "2021-07-14T13:32:48.959Z",
+    "isbnx": "string",
     "type_productions": "independently"
   },
   "transitions": [
