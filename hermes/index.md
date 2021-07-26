@@ -22,6 +22,16 @@ Http Header - **Authorization**.
 
 Authorization header format - **Token waGpB26t.JXD7RPEHqJVdTCy2AZl7HM0Garmv9DQB**
 
+
+## Embedded
+
+You can redirect user to that URL or embed an iframe with it. Recommended minimum width for the iframe is 1200px.
+
+`<iframe src="Guest Link" />`
+
+You can read about *Guest Link* below.
+
+
 ## Swagger Doc
 
 Actual documentation for endpoints contains in https://hermes.books.speechkit.ru/docs
@@ -40,7 +50,7 @@ Book languages [endpoint](https://hermes.books.speechkit.ru/docs#/speech_setting
 
 ### Speakers
 
-This endpoint absolutely open for requests.
+This endpoint requires Auth Token.
 
 List of voices you can use to create books. Your decision will affect the voice of the book.
 
@@ -149,6 +159,7 @@ Returns link which redirect to Speechki editor.
 This endpoint requires Auth Token.
 
 [Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/create_guest_link_handler_api_v1_orders_orders__order_id__link__post)
+
 
 
 ##### Request Body
