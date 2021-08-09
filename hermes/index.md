@@ -74,7 +74,7 @@ This endpoint requires an Auth Token.
 
 `url`: required field for the URL address of the text document. Supports **DOCX** and **PDF** formats. It is recommended to upload files without pictures and tables.
 
-`type_productions` supports two options: `client` is used if the client is working on the book independently (without Ызуусолш putsource options). If this field is not filled, our system will set a default value for this field.
+`type_productions` supports two options: `client` is used if the client is working on the book independently (without Speechki putsource options). If this field is not filled, our system will set a default value for this field.
 
 `details`: required dictionary with settings:
 
@@ -155,7 +155,7 @@ This endpoint requires an Auth Token.
 
 #### Change State
 
-Change current state. All of the available state changes for thу order will be contained in the endpoint.
+Change current state. All of the available state changes for the order will be contained in the endpoint.
 
 This endpoint requires an Auth Token.
 
