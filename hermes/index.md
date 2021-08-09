@@ -1,62 +1,62 @@
 # Hermes
 
-Hermes is service which provide integration with CRM and give opportunity to create orders (books) over REST API.
+Hermes is a service providing integration with Speechki CRM and giving opportunity to create orders (books) over REST API.
 
-At the moment we haven't sandbox, so all test for integration will be makes on production environment.
+At the moment we don't have a sandbox, so all the integration tests will be made in production environment.
 
 ## Requirements
 
-To work with API you need have:
-- **Customer** in Speechki CRM
-- Customer token - needs for call Hermes REST API
-- Prepare endpoint for WebHook
+To work with the API you need:
+- a **Customer** in Speechki CRM;
+- a Customer token to call Hermes REST API;
+- Prepare endpoint for WebHook.
 
 
 ## Customer Token
 
-Customer admin and manager can create this token. The token has no lifetime limit. To revoke a token, it must be destroyed.
+Customer's admin and manager can create the token. The token has no lifetime limit. For a token to be revoked it must be destroyed.
 
-Token help us identify current Customer and user. All the actions that will be performed will be written to this user.
+Token helps us identify the current Customer and user. All of the actions that will be performed will be written to this user.
 
-Http Header - **Authorization**.
+HTTP Header — **Authorization**.
 
 Authorization header format - **Token waGpB26t.JXD7RPEHqJVdTCy2AZl7HM0Garmv9DQB**
 
 
 ## Embedded
 
-You can redirect user to that URL or embed an iframe with it. Recommended minimum width for the iframe is 1200px.
+You can redirect a user to this URL or embed an iframe with it. Recommended minimum width for the iframe is 1200px.
 
 `<iframe src="Guest Link" />`
 
-You can read about *Guest Link* below.
+You can read about [*Guest Link*](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#guest-link) below. 
 
 
 ## Swagger Doc
 
-Actual documentation for endpoints contains in https://hermes.books.speechkit.ru/docs
+Up-to-date documentation for the endpoints is available at https://hermes.books.speechkit.ru/docs.
 
 
 ### Book languages
 
-This endpoint absolutely open for requests.
+This endpoint is absolutely open for requests.
 
-It is dictionary where key - unique id for language and value - label for this language.
+It is a dictionary where key - unique ID for language and value - label for this language.
 
-These values used for filter voices (speakers) and creating book (text parsing).
+These values are used for filtering voices (speakers) and creating the book (text parsing).
 
-Book languages [endpoint](https://hermes.books.speechkit.ru/docs#/speech_settings.v1/get_book_languages_handler_api_v1_speech_settings_languages__get)
+Book languages [endpoint](https://hermes.books.speechkit.ru/docs#/speech_settings.v1/get_book_languages_handler_api_v1_speech_settings_languages__get).
 
 
 ### Speakers
 
-This endpoint requires Auth Token.
+This endpoint requires an Auth Token.
 
 List of voices you can use to create books. Your decision will affect the voice of the book.
 
-This endpoint has required query parameter - **book_language** (endpoint Book Languages)
+This endpoint requires a query parameter [**book_language**](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#book-languages).
 
-Speakers [endpoint](https://hermes.books.speechkit.ru/docs#/speech_settings.v1/get_speakers_handler_api_v1_speech_settings_speakers__get)
+Speakers [endpoint](https://hermes.books.speechkit.ru/docs#/speech_settings.v1/get_speakers_handler_api_v1_speech_settings_speakers__get).
 
 
 ### Order
@@ -64,61 +64,60 @@ Speakers [endpoint](https://hermes.books.speechkit.ru/docs#/speech_settings.v1/g
 
 #### Create Order
 
-This endpoint requires Auth Token.
+This endpoint requires an Auth Token.
 
-[Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/create_order_handler_api_v1_orders_orders__post)
+[Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/create_order_handler_api_v1_orders_orders__post).
 
 ##### Request Body
 
-url - Require field. Text document URL address. Supports **docx** and **pdf** formats.It is recommended to give files without pictures and tables.
+`url`: required field for the URL address of the text document. Supports **DOCX** and **PDF** formats. It is recommended to upload files without pictures and tables.
+
+`type_productions` supports two options: `client` - is mean that the client is independently working on the book. If this field is not used, our system will set a default value for type_productions for your Customer.
 
 
-type_productions - Supports 2 options. Client - it is mean that the client is independently working on the book. If this field is not used, our system will set a default value for type_productions for your Customer.
+`details`: required dictionary with settings:
 
 
-details - Required Dictionary with settings:
+- `comment`: optional text field;
 
 
-- comment - Optional text for us.
+- `remote_key`: optional field for storing IDs from your system;
 
 
-- remote_key - Optional field but can help you identify the order in your system. Use id from your system.
+- `speaker`: required field for speaker ID which can be taken from the Speakers endpoint;
 
 
-- speaker - Require field. Needs to use speaker id which you can get from Speakers endpoint.
+- `speed`: optional field for choosing audio speed. Default value is 1.0;
 
 
-- speed - Optional field. You can choose audio speed. Default value 1.0.
+- `volume`: optional field for choosing audio volume. Default value is 1.0;
 
 
-- volume - Optional field. You can choose audio volume. Default value 1.0.
+- `isbnx`: optional field for the ISBN identifier;
 
 
-- isbnx - Optional field. If you have ISBN, you can set it.
+- `book_language`: required field for the language name from Book Languages endpoint;
 
 
-- book_language - Require field. Needs to use language name from Book Languages endpoint.
-
-
-- raw_authors - Require field. Object contains first_name (required), last_name (Optional), patronymic (Optional. This is third name)
+- `raw_authors`: required field. Object contains `first_name` (required), `last_name` (optional), patronymic (optional field for the middle name).
 
 
 ##### Response
 
-In the good case service return HTTP Code 202 and message.
+In case of success service returns HTTP Code 202 and a message.
 
 
-##### How get information about order.
+##### Getting the order information
 
-After the order will create in our system, We will send notification on your webhook, which your set in our system. Notification contains information about orders, builds, transitions.
+After the order was create in Speechki system, it will send a notification on your WebHook which your will set in our system. Notification contains information about orders, builds, and transitions.
 
 
 #### Retrieve Order
 
 
-This endpoint requires Auth Token.
+This endpoint requires an Auth Token.
 
-[Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/get_order_handler_api_v1_orders_orders__order_id___get)
+[Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/get_order_handler_api_v1_orders_orders__order_id___get).
 
 
 Returns one order.
@@ -127,59 +126,56 @@ Returns one order.
 ##### Response
 
 
-Response contains information about order, builds and available transitions.
+Response contains information about the order, builds, and available transitions.
 
-If the order contains book_id and type_productions is equal to client, then the guest_token_link field will contain a link to create a guest link.
+If the order contains a `book_id` and `type_productions` is equal to client, then the `guest_token_link` field will contain a link to create a guest link.
 
-
-Available transitions contains links for make transition. Every transition performs some actions that change the order.
+Available transitions contain links to make the transition. Every transition performs some actions that change the order.
 
 
 #### List Order
 
-This endpoint requires Auth Token.
+This endpoint requires an Auth Token.
 
-[Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/get_orders_handler_api_v1_orders_orders__get)
+[Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/get_orders_handler_api_v1_orders_orders__get).
 
 Returns 20 last orders.
 
 
 ###### Response
 
-Response contains information about orders.
+Response contains information about the orders.
 
-
-If the order contains book_id and type_productions is equal to client, then the guest_token_link field will contain a link to create a guest link.
+If the order contains `book_id` and `type_productions` is equal to client, then the `guest_token_link` field will contain a link to create a guest link.
 
 
 #### Guest Link
 
-Returns link which redirect to Speechki editor.
+Returns link which redirects to the Speechki editor.
 
-This endpoint requires Auth Token.
+This endpoint requires an Auth Token.
 
-[Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/create_guest_link_handler_api_v1_orders_orders__order_id__link__post)
+[Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/create_guest_link_handler_api_v1_orders_orders__order_id__link__post).
 
 
 
 ##### Request Body
 
-comeback_url - Optional field. The service will set the url to which the user can be returned from the Speechki editor.
-
+`comeback_url`: optional field. This service sets the url to which the user can be returned from the Speechki editor.
 
 
 #### Change State
 
 Change current state. Variants for use this endpoint contains in the order.
 
-This endpoint requires Auth Token.
+This endpoint requires an Auth Token.
 
-[Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/change_order_state_handler_api_v1_orders_orders__order_id__change_state__state___post)
+[Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/change_order_state_handler_api_v1_orders_orders__order_id__change_state__state___post).
 
 
 ### WebHook
 
-Notification request use **POST** method
+Notification request use **POST** method.
 
 #### WebHook Schema
 
