@@ -9,14 +9,14 @@ At the moment we don't have a sandbox, so all the integration tests will be made
 To work with the API you need:
 - a **Customer** in Speechki CRM;
 - a Customer token to call Hermes REST API;
-- Prepare endpoint for WebHook.
+- Prepare an endpoint for WebHook which will be receiving requests from our side.
 
 
 ## Customer Token
 
 Customer's admin and manager can create the token. The token has no lifetime limit. For a token to be revoked it must be destroyed.
 
-Token helps us identify the current Customer and user. All of the actions that will be performed will be written to this user.
+Token helps us identify the current Customer and user. All of the actions that will be performed with the token will be written under the user owning the token.
 
 HTTP Header — **Authorization**.
 
@@ -41,7 +41,7 @@ Up-to-date documentation for the endpoints is available at https://hermes.books.
 
 This endpoint is absolutely open for requests.
 
-It is a dictionary where key - unique ID for language and value - label for this language.
+It is a dictionary where key is a unique ID for the language and value is a label for this language.
 
 These values are used for filtering voices (speakers) and creating the book (text parsing).
 
@@ -72,8 +72,7 @@ This endpoint requires an Auth Token.
 
 `url`: required field for the URL address of the text document. Supports **DOCX** and **PDF** formats. It is recommended to upload files without pictures and tables.
 
-`type_productions` supports two options: `client` - is mean that the client is independently working on the book. If this field is not used, our system will set a default value for type_productions for your Customer.
-
+`type_productions` supports two options: `client` is used if the client is working on the book independently (without Ызуусолш putsource options). If this field is not filled, our system will set a default value for this field.
 
 `details`: required dictionary with settings:
 
@@ -166,7 +165,7 @@ This endpoint requires an Auth Token.
 
 #### Change State
 
-Change current state. Variants for use this endpoint contains in the order.
+Change current state. All of the available state changes for thу order will be contained in the endpoint.
 
 This endpoint requires an Auth Token.
 
