@@ -1,15 +1,16 @@
 # Hermes
 
-Hermes is a service providing integration with Speechki CRM and giving opportunity to create orders (books) over REST API.
+Hermes is a service providing integration with Speechki CRM to create orders (books) over REST API.
 
 At the moment we don't have a sandbox, so all the integration tests will be made in production environment.
 
+
 ## Requirements
 
-To work with the API you need:
-- a **Customer** in Speechki CRM;
+To work with the API you will need:
+- a Customer in Speechki CRM;
 - a Customer token to call Hermes REST API;
-- Prepare an endpoint for WebHook which will be receiving requests from our side.
+- an endpoint for WebHook which will be receiving requests from our side.
 
 
 ## Customer Token
@@ -20,7 +21,7 @@ Token helps us identify the current Customer and user. All of the actions that w
 
 HTTP Header — **Authorization**.
 
-Authorization header format - **Token waGpB26t.JXD7RPEHqJVdTCy2AZl7HM0Garmv9DQB**
+Authorization header format — **Token waGpB26t.JXD7RPEHqJVdTCy2AZl7HM0Garmv9DQB**
 
 
 ## Embedded
@@ -68,6 +69,7 @@ This endpoint requires an Auth Token.
 
 [Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/create_order_handler_api_v1_orders_orders__post).
 
+
 ##### Request Body
 
 `url`: required field for the URL address of the text document. Supports **DOCX** and **PDF** formats. It is recommended to upload files without pictures and tables.
@@ -76,27 +78,19 @@ This endpoint requires an Auth Token.
 
 `details`: required dictionary with settings:
 
-
 - `comment`: optional text field;
-
 
 - `remote_key`: optional field for storing IDs from your system;
 
-
 - `speaker`: required field for speaker ID which can be taken from the Speakers endpoint;
-
 
 - `speed`: optional field for choosing audio speed. Default value is 1.0;
 
-
 - `volume`: optional field for choosing audio volume. Default value is 1.0;
-
 
 - `isbnx`: optional field for the ISBN identifier;
 
-
 - `book_language`: required field for the language name from Book Languages endpoint;
-
 
 - `raw_authors`: required field. Object contains `first_name` (required), `last_name` (optional), patronymic (optional field for the middle name).
 
@@ -113,17 +107,14 @@ After the order was create in Speechki system, it will send a notification on yo
 
 #### Retrieve Order
 
-
 This endpoint requires an Auth Token.
 
 [Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/get_order_handler_api_v1_orders_orders__order_id___get).
-
 
 Returns one order.
 
 
 ##### Response
-
 
 Response contains information about the order, builds, and available transitions.
 
@@ -157,7 +148,6 @@ This endpoint requires an Auth Token.
 [Endpoint](https://hermes.books.speechkit.ru/docs#/orders.v1/create_guest_link_handler_api_v1_orders_orders__order_id__link__post).
 
 
-
 ##### Request Body
 
 `comeback_url`: optional field. This service sets the url to which the user can be returned from the Speechki editor.
@@ -175,6 +165,7 @@ This endpoint requires an Auth Token.
 ### WebHook
 
 Notification request use **POST** method.
+
 
 #### WebHook Schema
 
