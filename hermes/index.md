@@ -190,7 +190,8 @@ Notification request use **POST** method.
       "speed": 1,
       "volume": 1,
       "isbnx": "string",
-      "book_language": "russian"
+      "book_language": "russian",
+      "is_completed": true
     },
     "book_id": 0,
     "state": {
