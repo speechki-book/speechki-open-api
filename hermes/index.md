@@ -28,9 +28,14 @@ Authorization header format — **Token waGpB26t.JXD7RPEHqJVdTCy2AZl7HM0Garmv9DQ
 
 You can redirect a user to this URL or embed an iframe with it. Recommended minimum width for the iframe is 1200px.
 
-`<iframe src="Guest Link" />`
+`<iframe src="guest_link" />`
 
 You can read about [*Guest Link*](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#guest-link) below. 
+
+Additionaly to params that guest link contains, you can also append `lang` parameter to change editor language. `...&lang=eng`.
+Current available languages:
+* `rus` - Russian
+* `eng` - English
 
 Embed Editor also provides methods to interact with the corresponding Speechki CRM order. In the top bar of the window there would be controls for changing order state (if any is available). 
 
