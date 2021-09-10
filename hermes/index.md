@@ -32,6 +32,15 @@ You can redirect a user to this URL or embed an iframe with it. Recommended mini
 
 You can read about [*Guest Link*](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#guest-link) below. 
 
+Embed Editor also provides methods to interact with the corresponding Speechki CRM order. In the top bar of the window there would be controls for changing order state (if any is available). 
+
+When editing process is over and the order is closed iframe sends `postMessage` to its parent containing event object in following notation: 
+
+`
+  { event: 'speechki-close-editor', data: {} }
+`
+
+For right now there is only one event which signals order closing. 
 
 ## Swagger Doc
 
