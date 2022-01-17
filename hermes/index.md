@@ -88,7 +88,12 @@ This endpoint requires an Auth Token.
 
 `url`: required field for the URL address of the text document. Supports **DOCX** and **PDF** formats. It is recommended to upload files without pictures and tables.
 
-`type_productions` supports two options: `client` is used if the client is working on the book independently (without Speechki putsource options). If this field is not filled, our system will set a default value for this field.
+`type_productions` supports several options: 
+
+- `client` is used if the client is working on the book independently (without Speechki putsource options).
+- `outsource` is used if Speechki editors are working on the book.
+- `independently` is used if Customer editors are working on the book.
+- If this field is not filled, our system will set a default value for this field.
 
 `details`: required dictionary with settings:
 
@@ -274,3 +279,145 @@ Notification request use **POST** method.
 - independently
 - outsource
 - client
+
+
+## Case 1 (type of production - "client"):
+
+If you have clients who will edit books themselves.
+
+Main different from other type of productions is that editing the book is possible from outside the tracker (see [*Embedded*](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#embedded))
+
+### Step 1:
+
+These steps need execute before creates orders in the Tracker.
+
+- You need have Customer in Speechki Tracker;
+- Set Webhook address in the Customer settings;
+- Create API key for your Customer admin or manager. All orders will be created from this user.
+
+
+### Step 2:
+
+Now you can create orders.
+
+- Take languages list over [endpoint](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#book-languages);
+- Now you can take voices list with filter by language over [endpoint](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#speakers);
+- After that you can build request body
+
+```json
+{
+  "url": "https://source.com/test_file.docx",
+  "type_productions": "client",
+  "details": {
+    "name": "Test Book",
+    "raw_authors": [
+      {
+        "first_name": "Frank",
+        "last_name": "Herbert"
+      }
+    ],
+    "comment": "Some comment for us",
+    "remote_key": "id-from-your-system",
+    "speaker": 214,
+    "speed": 1,
+    "volume": 1,
+    "isbnx": "111111111",
+    "book_language": "english"
+  }
+}
+
+```
+
+We recommend split author name by part. It will help us correct create meta information about the book.
+
+- Send request to the server. Server will return status 202;
+- Once the order is created, our system will send notification on Webhook;
+- Now you can get information about the order over API with help order ID.
+
+
+### Step 3
+
+Audio editing.
+
+Next workflow can be different rely on flow which sets for your.
+
+Take the next flow:
+
+None -> Voiced
+
+Voiced -> Complete Order
+
+Previous step:
+- You create the order over API;
+
+Current steps:
+
+- After that our system create book and voice it;
+- You take information about the order over API [endpoint](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#retrieve-order);
+- The order contain field "guest_token_link". If this field is not null you can use this link for redirect to audio editor;
+- Audio editing;
+- Once you complete audio editing you can push button "complete editing" in editor. Our system will start build book and send notification after complete.
+
+Information about book builds you can get from the order information (*30 days after build*).
+
+If you want to embed editor in to your site use [this](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#embedded)
+
+
+## Case 2 (type of production - "outsource"):
+
+If you want that our editors work on books.
+
+
+### Step 1:
+
+These steps need execute before creates orders in the Tracker.
+
+- You need have Customer in Speechki Tracker;
+- Set Webhook address in the Customer settings;
+- Create API key for your Customer admin or manager. All orders will be created from this user.
+
+
+### Step 2:
+
+Now you can create orders.
+
+- Take languages list over [endpoint](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#book-languages);
+- Now you can take voices list with filter by language over [endpoint](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#speakers);
+- After that you can build request body
+
+```json
+{
+  "url": "https://source.com/test_file.docx",
+  "type_productions": "outsource",
+  "details": {
+    "name": "Test Book",
+    "raw_authors": [
+      {
+        "first_name": "Frank",
+        "last_name": "Herbert"
+      }
+    ],
+    "comment": "Some comment for us",
+    "remote_key": "id-from-your-system",
+    "speaker": 214,
+    "speed": 1,
+    "volume": 1,
+    "isbnx": "111111111",
+    "book_language": "english"
+  }
+}
+
+```
+
+We recommend split author name by part. It will help us correct create meta information about the book.
+
+- Send request to the server. Server will return status 202;
+- Once the order is created, our system will send notification on Webhook;
+- Now you can get information about the order over API with help order ID.
+
+
+### Step 3:
+
+- Our editors work on the book (audio editing and proofing);
+- Once the editors complete work on the order, our system will start build book process and notification after complete;
+- You can take information about builds from webhook notification or [order endpoint](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#retrieve-order).
