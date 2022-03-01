@@ -84,5 +84,3 @@ List of voices you can use to create books. Your decision will affect the voice 
 This endpoint requires a query parameter [**book_language**](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#book-languages).
 
 Speakers [endpoint](https://hermes.books.speechkit.ru/docs#/speech_settings.v1/get_speakers_handler_api_v1_speech_settings_speakers__get).
-
-
