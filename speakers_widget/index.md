@@ -131,7 +131,7 @@ changes the language filter in widget
                 </p>
                 <p>
                     <label for="title">ISBN</label><br>
-                    <input type="text" id="title" placeholder="ISBN" name="ISBN" />
+                    <input type="text" id="isbn" placeholder="ISBN" name="ISBN" />
                 </p>
                 <p>
                     <label for="language">Language</label><br>
