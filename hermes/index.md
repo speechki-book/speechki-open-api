@@ -49,7 +49,7 @@ For right now there is only one event which signals order closing.
 
 ## Swagger Doc
 
-Up-to-date documentation for the endpoints is available at https://hermes.books.speechkit.ru/docs.
+Up-to-date documentation for the endpoints is available at https://hermes.books.speechki.org/docs.
 
 
 ## Docs
@@ -72,7 +72,7 @@ It is a dictionary where key is a unique ID for the language and value is a labe
 
 These values are used for filtering voices (speakers) and creating the book (text parsing).
 
-Book languages [endpoint](https://hermes.books.speechkit.ru/docs#/speech_settings.v1/get_book_languages_handler_api_v1_speech_settings_languages__get).
+Book languages [endpoint](https://hermes.books.speechki.org/docs#/speech_settings.v1/get_book_languages_handler_api_v1_speech_settings_languages__get).
 
 
 ### Speakers
@@ -83,7 +83,7 @@ List of voices you can use to create books. Your decision will affect the voice 
 
 This endpoint requires a query parameter [**book_language**](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#book-languages).
 
-Speakers [endpoint](https://hermes.books.speechkit.ru/docs#/speech_settings.v1/get_speakers_handler_api_v1_speech_settings_speakers__get).
+Speakers [endpoint](https://hermes.books.speechki.org/docs#/speech_settings.v1/get_speakers_handler_api_v1_speech_settings_speakers__get).
 
 
 ### Speakers by customer id
@@ -95,4 +95,4 @@ This endpoint requires:
 - a customer id from Speechki system,
 - a query parameter [**book_language**](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#book-languages).
 
-Speakers by customer id [endpoint](https://hermes.books.speechkit.ru/docs#/speech_settings.v1/get_speakers_by_customer_handler_api_v1_speech_settings_speakers_by_customer__customer_id___get).
+Speakers by customer id [endpoint](https://hermes.books.speechki.org/docs#/speech_settings.v1/get_speakers_by_customer_handler_api_v1_speech_settings_speakers_by_customer__customer_id___get).
