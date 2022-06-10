@@ -45,6 +45,8 @@ When editing process is over and the order is closed iframe sends `postMessage` 
   { event: 'speechki-close-editor', data: {} }
 `
 
+If there is no data related to the event, data field will be `null`.
+
 For right now there is only one event which signals order closing. 
 
 ## Swagger Doc
