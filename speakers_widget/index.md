@@ -6,43 +6,68 @@ This is a widget which demonstrates Speechki speakers
 
 ### Default
 
-1. Paste script code somewhere on your page 
+1. Paste script code somewhere on your page
+
 ```html
 <script defer src="https://widget.speechki.org/widget.js"></script>
 ```
 
 2. Create widget with `Speechki` library
+
 ```javascript
 const widget = Speechki.widget({
-  target: '#widget1',
-  customer_id: YOUR_CUSTOMER_ID,
-  book_language: DEFAULT_LANGUAGE,
+    target: '#widget1',
+    customer_id: YOUR_CUSTOMER_ID,
+    book_language: DEFAULT_LANGUAGE,
 });
 ```
 
 ### ESM
-Not available yet
 
+1. Install package through npm (or your prefered package manager)
+
+```
+npm i @speechki/widgets
+```
+
+2. Import `Speechki` module in your code
+
+```
+import Speechki from '@speechki/widgets'
+```
+
+2. Use `widget` method to create a widget
+
+```javascript
+const widget = Speechki.widget({
+    target: '#widget1',
+    customer_id: YOUR_CUSTOMER_ID,
+    book_language: DEFAULT_LANGUAGE,
+});
+```
 
 ### Options
 
-| Name        | Description | 
-| ----------- | ----------- | 
-| `target`     | CSS Selector or DOM element which widget will mount to <br> *By default widget takes all the available space inside it's container    | 
-| `customer_id`   | Your specific customer id in Speechki         |
-| `book_language` | Default language of the book, speakers will be filtered according to language |
+| Name            | Description                                                                                                                         |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `target`        | CSS Selector or DOM element which widget will mount to <br> \*By default widget takes all the available space inside it's container |
+| `customer_id`   | Your specific customer id in Speechki                                                                                               |
+| `book_language` | Default language of the book, speakers will be filtered according to language                                                       |
 
 ### Methods
 
-#### `on(name, callback)` 
+#### `on(name, callback)`
+
 subscribes to widget event
 
 ##### Events
-| Name        | Description | Data  |
-| ----------- | ----------- | ----- |
-| `select`    | Triggers when users selects the speaker    |  `name` - speaker name <br> `id` - speaker id <br> `slug` - speaker slug |
+
+| Name     | Description                             | Data                                                                    |
+| -------- | --------------------------------------- | ----------------------------------------------------------------------- |
+| `select` | Triggers when users selects the speaker | `name` - speaker name <br> `id` - speaker id <br> `slug` - speaker slug |
 
 Events data:
+
 ```javascript
 {
   event // name of the event
@@ -50,7 +75,6 @@ Events data:
     ... // data passed with the event
 }
 ```
-
 
 #### `off(name, callback)`
 
@@ -60,13 +84,11 @@ unsubscribes from widget event
 
 `callback` - callback function to be called
 
-#### `changeLanguage(language)` 
+#### `changeLanguage(language)`
 
 changes the language filter in widget
 
 `language` - language of your book correlating with our. [List of languages]()
-
-
 
 ## Examples
 
@@ -75,36 +97,37 @@ changes the language filter in widget
 ```html
 ...
 <head>
-  <script defer src="https://widget.speechki.org/widget.js"></script>
+    <script defer src="https://widget.speechki.org/widget.js"></script>
 </head>
 <body>
-  ...
+    ...
     <div id="widget1"></div>
-  ...
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const widget1 = Speechki.widget({ // creates widget
-        target: '#widget1',
-        customer_id: 3,
-        book_language: 'english',
-      });
-    
-      function onSelect(event) {
-        alert(event.data.name);
-      }
-    
-      widget1.on('select', onSelect); // subscribe to the event    
-      widget1.off('select', onSelect); // unsibscribe from the event
-    
-      widget1.changeLanguage('spanish') // change language filter to spanish
-    });    
-  </script>
+    ...
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const widget1 = Speechki.widget({
+                // creates widget
+                target: '#widget1',
+                customer_id: 3,
+                book_language: 'english',
+            });
+
+            function onSelect(event) {
+                alert(event.data.name);
+            }
+
+            widget1.on('select', onSelect); // subscribe to the event
+            widget1.off('select', onSelect); // unsibscribe from the event
+
+            widget1.changeLanguage('spanish'); // change language filter to spanish
+        });
+    </script>
 </body>
 ```
 
-### With simple form 
-<a href="https://widget.speechki.org/demo.html" target="_blank">Demo</a>
+### With simple form
 
+<a href="https://widget.speechki.org/demo.html" target="_blank">Demo</a>
 
 ```html
 <!DOCTYPE html>
@@ -131,7 +154,7 @@ changes the language filter in widget
                 </p>
                 <p>
                     <label for="title">ISBN</label><br>
-                    <input type="text" id="isbn" placeholder="ISBN" name="ISBN" />
+                    <input type="text" id="title" placeholder="ISBN" name="ISBN" />
                 </p>
                 <p>
                     <label for="language">Language</label><br>
@@ -165,16 +188,16 @@ changes the language filter in widget
                 w1.on('select', (event) => { // subscribe to select event
                     speaker = event.data.slug;
                 });
-                
+
                 form.addEventListener('submit', (event) => {
                     event.preventDefault();
 
                     let data = new FormData(event.target);
-                    
+
                     data.append('speaker', speaker);
-                    
+
                     data = JSON.stringify(Object.fromEntries(data));
-                    
+
                     alert(data);
                 })
             });
@@ -184,3 +207,6 @@ changes the language filter in widget
 
 ```
 
+## Self hosting
+
+If you want to serve this widget from your server, then clone/fork the repository, store it somewhere on your servers and replace `WIDGET_URL=https://widget.speechki.org` to `WIDGET_URL=your_domain` in `.env.production` file.
