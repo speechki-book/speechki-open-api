@@ -12,4 +12,4 @@ Integration with Speechki CRM
 
 Widget demonstrates Speechki speakers
 
-[Documentation](/speakers_widget/index.md)
+[Documentation](https://github.com/speechki-book/widgets)
