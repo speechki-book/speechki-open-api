@@ -43,17 +43,23 @@ If you use this flow, you can't edit text and audio. You can download complete a
 
 ### Description
 
+
+---
+
 #### None -> conversion
 
 It is first transition. You created order via API and our system started work on a text.
 
-**Actions which will be started after transition:**
+Actions which will be started after transition:
 
 - Webhook notification
 - Conversion process
 
 
-**How makes transition** - automatically after order creation
+How makes transition - automatically after order creation
+
+
+---
 
 
 #### conversion -> record
@@ -61,12 +67,15 @@ It is first transition. You created order via API and our system started work on
 The system has successfully completed the conversion process and started record the book.
 
 
-**Actions which will be started after transition:**
+Actions which will be started after transition:
 
 - Record process
 
 
-**How makes transition** - by trigger
+How makes transition - by trigger
+
+
+---
 
 
 #### conversion -> conv_in_progress
@@ -74,7 +83,10 @@ The system has successfully completed the conversion process and started record 
 The system completed the conversion process with an error, so our editors will fix problems and return book to stream.
 
 
-**How makes transition** - by trigger
+How makes transition - by trigger
+
+
+---
 
 
 #### conv_in_progress -> record
@@ -82,12 +94,15 @@ The system completed the conversion process with an error, so our editors will f
 Editors fixed all problems. After that they are returning the order to stream.
 
 
-**Actions which will be started after transition:**
+Actions which will be started after transition:
 
 - Record process
 
 
-**How makes transition** - human
+How makes transition - human
+
+
+---
 
 
 #### record -> build
@@ -95,12 +110,15 @@ Editors fixed all problems. After that they are returning the order to stream.
 The system has successfully completed the record process and started build the audiobook.
 
 
-**Actions which will be started after transition:**
+Actions which will be started after transition:
 
 - Build process
 
 
-**How makes transition** - by trigger
+How makes transition - by trigger
+
+
+---
 
 
 #### record -> record_in_progress
@@ -108,7 +126,10 @@ The system has successfully completed the record process and started build the a
 The system completed the record process with an error, so our editors will fix problems and return book to stream.
 
 
-**How makes transition** - by trigger
+How makes transition - by trigger
+
+
+---
 
 
 #### record_in_progress -> build
@@ -116,12 +137,15 @@ The system completed the record process with an error, so our editors will fix p
 Editors fixed all problems. After that they are returning the order to stream.
 
 
-**Actions which will be started after transition:**
+Actions which will be started after transition:
 
 - Build process
 
 
-**How makes transition** - human
+How makes transition - human
+
+
+---
 
 
 #### build -> order_completed
@@ -129,12 +153,15 @@ Editors fixed all problems. After that they are returning the order to stream.
 The system has successfully completed the record process and closed the order.
 
 
-**Actions which will be started after transition:**
+Actions which will be started after transition:
 
 - Webhook notification
 
 
-**How makes transition** - by trigger
+How makes transition - by trigger
+
+
+---
 
 
 #### build -> build_in_progress
@@ -142,17 +169,21 @@ The system has successfully completed the record process and closed the order.
 The system completed the build process with an error, so our editors will fix problems and return book to stream.
 
 
-**How makes transition** - by trigger
+How makes transition - by trigger
+
+
+---
 
 
 #### build_in_progress -> order_completed
 
+
 Editors fixed all problems. After that they are returning the order to stream.
 
 
-**Actions which will be started after transition:**
+Actions which will be started after transition:
 
 - Webhook notification
 
 
-**How makes transition** - human
+How makes transition - human
