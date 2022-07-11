@@ -102,3 +102,4 @@ Speakers by customer id [endpoint](https://hermes.books.speechki.org/docs#/speec
 ## flows
 
 - [**auto**](https://github.com/speechki-book/speechki-open-api/blob/master/flows/auto.md)
+- [**simple integration**](https://github.com/speechki-book/speechki-open-api/blob/master/flows/simple_integration.md)
