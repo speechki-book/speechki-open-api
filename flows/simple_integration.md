@@ -180,6 +180,7 @@ The system has successfully completed the record process and closed the order.
 Actions which will be started after transition:
 
 - Webhook notification
+- Marks the order as completed
 
 
 How makes transition - by trigger
@@ -208,6 +209,7 @@ Editors fixed all problems. After that they are returning the order to stream.
 Actions which will be started after transition:
 
 - Webhook notification
+- Marks the order as completed
 
 
 How makes transition - human
