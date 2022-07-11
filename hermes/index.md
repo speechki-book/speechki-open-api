@@ -97,3 +97,8 @@ This endpoint requires:
 - a query parameter [**book_language**](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/index.md#book-languages).
 
 Speakers by customer id [endpoint](https://hermes.books.speechki.org/docs#/speech_settings.v1/get_speakers_by_customer_handler_api_v1_speech_settings_speakers_by_customer__customer_id___get).
+
+
+## flows
+
+- [**auto**](https://github.com/speechki-book/speechki-open-api/blob/master/flows/auto.md)
