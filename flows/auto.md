@@ -311,7 +311,7 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
       "book_language": "english",
       "is_completed": true
     },
-    "book_id": null,
+    "book_id": 1,
     "state": {
       "id": 10,
       "label": {
