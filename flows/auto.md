@@ -255,7 +255,7 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
     },
     "book_id": null,
     "state": {
-      "id": 6,
+      "id": 16,
       "label": {
         "eng": "Conversion in progress"
       },
@@ -272,7 +272,7 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
       "created": "2021-07-14T13:32:48.958Z",
       "source_state": null,
       "destination_state": {
-            "id": 6,
+            "id": 16,
             "label": {
                 "eng": "Conversion in progress"
             },
@@ -330,7 +330,7 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
       "created": "2021-07-14T13:32:48.958Z",
       "source_state": null,
       "destination_state": {
-            "id": 6,
+            "id": 16,
             "label": {
                 "eng": "Conversion in progress"
             },

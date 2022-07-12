@@ -280,7 +280,7 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
     },
     "book_id": null,
     "state": {
-      "id": 6,
+      "id": 16,
       "label": {
         "eng": "Conversion in progress"
       },
@@ -297,7 +297,7 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
       "created": "2021-07-14T13:32:48.958Z",
       "source_state": null,
       "destination_state": {
-            "id": 6,
+            "id": 16,
             "label": {
                 "eng": "Conversion in progress"
             },
@@ -338,7 +338,7 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
     },
     "book_id": 1,
     "state": {
-      "id": 7,
+      "id": 6,
       "label": {
         "eng": "Audio editing"
       },
@@ -355,7 +355,7 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
       "created": "2021-07-14T13:32:48.958Z",
       "source_state": null,
       "destination_state": {
-            "id": 6,
+            "id": 16,
             "label": {
                 "eng": "Conversion in progress"
             },
@@ -398,7 +398,7 @@ Endpoint - [retrieve](https://github.com/speechki-book/speechki-open-api/blob/ma
     "book_id": 1,
     "isbnx": "111111111",
     "state": {
-      "id": 7,
+      "id": 6,
       "label": {
         "eng": "Audio editing"
       },
@@ -482,7 +482,7 @@ Endpoint - [retrieve](https://github.com/speechki-book/speechki-open-api/blob/ma
       "created": "2021-07-14T13:32:48.958Z",
       "source_state": null,
       "destination_state": {
-            "id": 6,
+            "id": 16,
             "label": {
                 "eng": "Conversion in progress"
             },
