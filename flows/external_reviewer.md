@@ -10,13 +10,13 @@ User have access to editor only when the order in "check" state. In this situati
 
 
 ## States:
-- approved
-- ready_to_voice
+- approved (Text preparation)
+- ready_to_voice (Text review)
 - record (Record in progress)
 - record_in_progress (Record is broken and people are fixing it)
 - voiced (Audio editing)
-- internal_check
-- check
+- internal_check (Internal review)
+- check (The audiobook is on the author review)
 - build (Build in progress)
 - build_in_progress (Build is broken and people are fixing it)
 - order_completed (The order is completed)
