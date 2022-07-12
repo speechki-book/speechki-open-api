@@ -96,7 +96,7 @@ Editors fixed all problems. After that they are returning the order to stream.
 
 Actions which will be started after transition:
 
-- Record process
+- Recording process
 
 
 How makes transition - human

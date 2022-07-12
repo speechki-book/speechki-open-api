@@ -75,7 +75,7 @@ The system has successfully completed the conversion process and started record 
 
 Actions which will be started after transition:
 
-- Record process
+- Recording process
 
 
 How makes transition - by trigger
