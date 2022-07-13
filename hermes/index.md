@@ -99,6 +99,17 @@ This endpoint requires:
 Speakers by customer id [endpoint](https://hermes.books.speechki.org/docs#/speech_settings.v1/get_speakers_by_customer_handler_api_v1_speech_settings_speakers_by_customer__customer_id___get).
 
 
+### Customer flows
+
+Every customer has list of available flows, rows from this list can be used to more precisely control order creation.
+
+In order creation it is field `customer_flow`.
+
+This endpoint requires an Auth Token.
+
+You can see [endpoint](https://hermes.books.speechki.org/docs#/customers.v2/customer_flows_handler_api_v2_customers_orders_customer_flows__get).
+
+
 ## flows
 
 - [**auto**](https://github.com/speechki-book/speechki-open-api/blob/master/flows/auto.md)
