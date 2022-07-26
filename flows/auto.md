@@ -1,19 +1,17 @@
 # Auto
 
-It is flow where the system receives input book (docx file) and returns complete build. This flow doesn't need human help.
-If an error occurs, the editors from Speechki will fix it.
-
-If you use this flow, you can't edit text and audio. You can download complete audiobook.
+Automatic flow receives a text file (DOCX) and returns a ready-for-download archive with audiofiles inside (audiobook format).
+If an error occurs, the Speechki editorial team will be notified automatically, fix the problem, and restart the process.
 
 
 ## States:
-- conversion (Conversion in progress)
-- conv_in_progress (The Conversion is broken and people are fixing it)
-- record (Record in progress)
-- record_in_progress (Record is broken and people are fixing it)
-- build (Build in progress)
-- build_in_progress (Build is broken and people are fixing it)
-- order_completed (The order is completed)
+- conversion (The system works on text formatting)
+- conv_in_progress (The text formatting process was interrupted by a technical issue which is being fixed by Speechki editorial team)
+- record (The system records the text)
+- record_in_progress (The recording process was interrupted by a technical issue which is being fixed by Speechki editorial team)
+- build (The system put together audiofiles and makes post-production)
+- build_in_progress (The post-production process was interrupted by a technical issue which is being fixed by Speechki editorial team)
+- order_completed (The order is completed; Files are ready to be download)
 
 
 ## Transitions:
@@ -48,15 +46,15 @@ If you use this flow, you can't edit text and audio. You can download complete a
 
 #### None -> conversion
 
-It is first transition. You created order via API and our system started work on a text.
+You created order via API and our system started working on the uploaded text.
 
-Actions which will be started after transition:
+Actions that will be initiated after transition:
 
 - Webhook notification
-- Conversion process
+- Conversion process (text formatting)
 
 
-How makes transition - automatically after order creation
+The transition will be initiated automatically by Speechki
 
 
 ---
@@ -64,15 +62,15 @@ How makes transition - automatically after order creation
 
 #### conversion -> record
 
-The system has successfully completed the conversion process and started record the book.
+The system completed the conversion process (text formatting) and started recording the text.
 
 
-Actions which will be started after transition:
+Actions that will be initiated after transition:
 
-- Record process
+- Recording process
 
 
-How makes transition - by trigger
+The transition will be initiated by the trigger
 
 
 ---
@@ -80,10 +78,10 @@ How makes transition - by trigger
 
 #### conversion -> conv_in_progress
 
-The system completed the conversion process with an error, so our editors will fix problems and return book to stream.
+The system completed the conversion process (text formatting) with an error. Speechki editorial team is working on fixing issues that appeared. Once fixed, the text will be put back into the flow.
 
 
-How makes transition - by trigger
+The transition will be initiated by the trigger
 
 
 ---
@@ -91,15 +89,15 @@ How makes transition - by trigger
 
 #### conv_in_progress -> record
 
-Editors fixed all problems. After that they are returning the order to stream.
+Speechki editorial team fixed all the issues and put back the text into the flow.
 
 
-Actions which will be started after transition:
+Actions that will be initiated after transition:
 
 - Recording process
 
 
-How makes transition - human
+The transition will be initiated by the Speechki Editorial Team
 
 
 ---
@@ -107,15 +105,15 @@ How makes transition - human
 
 #### record -> build
 
-The system has successfully completed the record process and started build the audiobook.
+The system completed the recording process and started post-production process (building).
 
 
-Actions which will be started after transition:
+Actions that will be initiated after transition:
 
-- Build process
+- Building process (post-production)
 
 
-How makes transition - by trigger
+The transition will be initiated by the trigger
 
 
 ---
@@ -123,10 +121,10 @@ How makes transition - by trigger
 
 #### record -> record_in_progress
 
-The system completed the record process with an error, so our editors will fix problems and return book to stream.
+The system completed the recording process with an error. Speechki editorial team is working on fixing issues that appeared. Once fixed, the text will be put back into the flow.
 
 
-How makes transition - by trigger
+The transition will be initiated by the trigger
 
 
 ---
@@ -134,15 +132,15 @@ How makes transition - by trigger
 
 #### record_in_progress -> build
 
-Editors fixed all problems. After that they are returning the order to stream.
+Speechki editorial team fixed all the issues and put back the text into the flow.
 
 
-Actions which will be started after transition:
+Actions that will be initiated after transition:
 
-- Build process
+- Building process (post-production)
 
 
-How makes transition - human
+The transition will be initiated by the Speechki Editorial Team
 
 
 ---
@@ -150,16 +148,16 @@ How makes transition - human
 
 #### build -> order_completed
 
-The system has successfully completed the record process and closed the order.
+The system completed the post-production process (building) and closed the order.
 
 
-Actions which will be started after transition:
+Actions that will be initiated after transition:
 
 - Webhook notification
-- Marks the order as completed
+- Turn the order into Completed status
 
 
-How makes transition - by trigger
+The transition will be initiated by the trigger
 
 
 ---
@@ -167,10 +165,10 @@ How makes transition - by trigger
 
 #### build -> build_in_progress
 
-The system completed the build process with an error, so our editors will fix problems and return book to stream.
+The system completed the prost-production process (building) with an error. Speechki editorial team is working on fixing issues that appeared. Once fixed, the text will be put back into the flow.
 
 
-How makes transition - by trigger
+The transition will be initiated by the trigger
 
 
 ---
@@ -178,16 +176,15 @@ How makes transition - by trigger
 
 #### build_in_progress -> order_completed
 
+Speechki editorial team fixed all the issues and put back the text into the flow.
 
-Editors fixed all problems. After that they are returning the order to stream.
 
-
-Actions which will be started after transition:
+Actions that will be initiated after transition:
 
 - Webhook notification
-- Marks the order as completed
+- Turn the order into Completed status
 
-How makes transition - human
+The transition will be initiated by the Speechki Editorial Team
 
 
 ## Example
