@@ -259,6 +259,7 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
 {
   "notification_id": 1,
   "event_type": "create",
+  "remote_key": "id-from-your-system",
   "order": {
     "id": "string",
     "details": {
@@ -317,6 +318,7 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
 {
   "notification_id": 2,
   "event_type": "change_state",
+  "remote_key": "id-from-your-system",
   "order": {
     "id": "string",
     "details": {
@@ -444,6 +446,7 @@ Endpoint - [retrieve](https://github.com/speechki-book/speechki-open-api/blob/ma
 {
   "notification_id": 3,
   "event_type": "change_state",
+  "remote_key": "id-from-your-system",
   "order": {
     "id": "string",
     "details": {
