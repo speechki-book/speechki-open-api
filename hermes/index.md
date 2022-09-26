@@ -76,6 +76,22 @@ These values are used for filtering voices (speakers) and creating the book (tex
 Book languages [endpoint](https://hermes.books.speechki.org/docs#/speech_settings.v1/get_book_languages_handler_api_v1_speech_settings_languages__get).
 
 
+### Book languages by customer id
+
+This endpoint is absolutely open for requests.
+
+It is a dictionary where key is a unique ID for the language and value is a label for this language.
+
+These values are used for filtering voices (speakers) and creating the book (text parsing).
+
+This endpoint requires:
+- a customer id from Speechki system.
+
+The main feature of this endpoint is that this endpoint only returns languages for which there are voices.
+
+Book languages [endpoint](https://hermes.books.speechki.org/docs#/speech_settings.v1/get_book_languages_by_customer_handler_api_v1_speech_settings_languages_by_customer__customer_id___get)
+
+
 ### Speakers
 
 This endpoint requires an Auth Token.
