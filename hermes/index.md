@@ -38,6 +38,10 @@ Current available languages:
 
 Embed Editor also provides methods to interact with the corresponding Speechki CRM order. In the top bar of the window there would be controls for changing order state (if any is available). 
 
+## iframe Events
+
+#### speechki-close-editor
+
 When editing process is over and the order is closed iframe sends `postMessage` to its parent containing event object in following notation: 
 
 `
@@ -46,7 +50,31 @@ When editing process is over and the order is closed iframe sends `postMessage` 
 
 If there is no data related to the event, data field will be `null`.
 
-For right now there is only one event which signals order closing. 
+
+#### speechki-token-expired
+
+When guest access token has expired and cannot be refreshed user will be redirected to the error page and receive following event via postMessage.
+
+
+`
+  { event: 'speechki-close-editor', data: { detail: 'Error message' } }
+`
+
+#### speechki-access-denied` 
+
+When user doesn't have an access to the order user will be redirected to the error page and recieve following event via postMessage
+
+`
+  { event: 'speechki-access-denied', data: { detail: 'Error message' } }
+`
+
+#### speechki-error
+
+This event will be sent when unexpected error ocurres on our side.
+
+`
+  { event: 'speechki-error', data: { detail: 'Error message' } }
+`
 
 ## Swagger Doc
 
