@@ -374,9 +374,9 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
       "speed": 1,
       "volume": 1,
       "isbnx": "111111111",
-      "book_language": "english",
-      "is_completed": false
+      "book_language": "english"
     },
+    "is_completed": false,
     "book_id": null,
     "state": {
       "id": 6,
@@ -433,9 +433,9 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
       "speed": 1,
       "volume": 1,
       "isbnx": "111111111",
-      "book_language": "english",
-      "is_completed": false
+      "book_language": "english"
     },
+    "is_completed": true,
     "book_id": 1,
     "state": {
       "id": 7,
@@ -566,9 +566,9 @@ Endpoint - [retrieve](https://github.com/speechki-book/speechki-open-api/blob/ma
       "speed": 1,
       "volume": 1,
       "isbnx": "111111111",
-      "book_language": "english",
-      "is_completed": true
+      "book_language": "english"
     },
+    "is_completed": true,
     "book_id": 1,
     "state": {
       "id": 10,

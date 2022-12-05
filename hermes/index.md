@@ -57,9 +57,9 @@ Up-to-date documentation for the endpoints is available at https://hermes.books.
 
 At the moment we have 2 versions API.
 
-[V1](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/v1.md) is stable but have fewer features.
+[V1](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/v1.md) is deprecated.
 
-[V2](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/v2.md) have more feature but not stable at the moment.
+[V2](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/v2.md).
 
 
 ## Entities

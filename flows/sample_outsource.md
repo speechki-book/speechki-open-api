@@ -1,6 +1,7 @@
-# Auto
+# Sample outsource
 
-Automatic flow receives a text file (DOCX) and returns a ready-for-download archive with audiofiles inside (audiobook format).
+This flow receives a text/text file (DOCX) and returns a ready-for-download archive with audiofiles inside (audiobook format).
+Speechki editors are responsible for proofreading.
 If an error occurs, the Speechki editorial team will be notified automatically, fix the problem, and restart the process.
 
 
@@ -9,7 +10,9 @@ If an error occurs, the Speechki editorial team will be notified automatically, 
 - conv_in_progress (The text formatting process was interrupted by a technical issue which is being fixed by Speechki editorial team)
 - record (The system records the text)
 - record_in_progress (The recording process was interrupted by a technical issue which is being fixed by Speechki editorial team)
-- build (The system put together audiofiles and makes post-production)
+- voiced (Audio editing)
+- internal_check (Internal review)
+- build (The system put together audio files and makes post-production)
 - build_in_progress (The post-production process was interrupted by a technical issue which is being fixed by Speechki editorial team)
 - order_completed (The order is completed; Files are ready to be download)
 
@@ -21,7 +24,9 @@ If an error occurs, the Speechki editorial team will be notified automatically, 
 
 - None -> conversion
 - conversion -> record
-- record -> build
+- record -> voiced
+- voiced -> internal_review
+- internal_review -> build
 - build -> order_completed
 
 
@@ -31,9 +36,12 @@ If an error occurs, the Speechki editorial team will be notified automatically, 
 - conversion -> record
 - conversion -> conv_in_progress
 - conv_in_progress -> record
-- record -> build
+- record -> voiced
 - record -> record_in_progress
-- record_in_progress -> build
+- record_in_progress -> voiced
+- voiced -> internal_review
+- internal_review -> voiced
+- internal_review -> build
 - build -> order_completed
 - build -> build_in_progress
 - build_in_progress -> order_completed
@@ -103,17 +111,18 @@ The transition will be initiated by the Speechki Editorial Team
 ---
 
 
-#### record -> build
-
-The system completed the recording process and started post-production process (building).
+#### record -> voiced
 
 
-Actions that will be initiated after transition:
-
-- Building process (post-production)
+The system has successfully completed the record process. Now Speechki editors can listen audiobook and fix mistakes.
 
 
-The transition will be initiated by the trigger
+Actions which will be started after transition:
+
+-
+
+
+How makes transition - by trigger
 
 
 ---
@@ -130,17 +139,68 @@ The transition will be initiated by the trigger
 ---
 
 
-#### record_in_progress -> build
+#### record_in_progress -> voiced
 
-Speechki editorial team fixed all the issues and put back the text into the flow.
-
-
-Actions that will be initiated after transition:
-
-- Building process (post-production)
+Editors fixed all problems. After that they are returning the order to stream. Now Speechki editors can listen audiobook and fix mistakes.
 
 
-The transition will be initiated by the Speechki Editorial Team
+Actions which will be started after transition:
+
+- 
+
+
+How makes transition - human
+
+
+---
+
+
+#### voiced -> internal_check
+
+
+The Editor send the order on The editor-in-chief review.
+
+
+Actions which will be started after transition:
+
+- 
+
+
+How makes transition - human
+
+
+---
+
+
+#### internal_check -> voiced
+
+
+The editor-in-chief left the edits and return the order to the editors.
+
+
+Actions which will be started after transition:
+
+-
+
+
+How makes transition - human
+
+
+---
+
+
+#### internal_check -> build
+
+
+The author approve edits and send the order to build.
+
+
+Actions which will be started after transition:
+
+- 
+
+
+How makes transition - human
 
 
 ---
@@ -191,34 +251,24 @@ The transition will be initiated by the Speechki Editorial Team
 
 Input params:
 
-- Customer flow - `1` (use "auto" flow)
+- Customer flow - `1` (use "sample" flow)
 
-Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/v2.md#create-order)
+Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/master/hermes/v2.md#create-sample)
 
 ### Request body
 
 
 ```json
 {
-  "url": "https://source.com/test_file.docx",
+  "text": "Hello World!",
   "customer_flow": 1,
   "details": {
-    "name": "Test Book",
-    "raw_authors": [
-      {
-        "first_name": "Frank",
-        "last_name": "Herbert"
-      }
-    ],
+    "name": "Test Sample",
     "comment": "Some comment for us",
     "remote_key": "id-from-your-system",
     "speaker": 214,
     "speed": 1,
-    "volume": 1,
-    "isbnx": "111111111",
-    "book_language": "english",
-    "style_sheet_link": "https://source.com/style_sheet.json",
-    "preview": "https://source.com/preview.jpg"
+    "volume": 1
   }
 }
 ```
@@ -235,11 +285,11 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
   "order": {
     "id": "string",
     "details": {
-      "name": "Test Book",
+      "name": "Test Sample",
       "raw_authors": [
         {
-          "first_name": "Frank",
-          "last_name": "Herbert"
+          "first_name": "Default",
+          "last_name": ""
         }
       ],
       "comment": "Some comment for us",
@@ -247,7 +297,6 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
       "speaker": 214,
       "speed": 1,
       "volume": 1,
-      "isbnx": "111111111",
       "book_language": "english"
     },
     "is_completed": false,
@@ -261,8 +310,8 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
     },
     "created": "2021-07-14T13:32:48.958Z",
     "modified": "2021-07-14T13:32:48.959Z",
-    "isbnx": "111111111",
-    "type_productions": "client"
+    "isbnx": null,
+    "type_productions": "outsource"
   },
   "transitions": [
     {
@@ -294,11 +343,11 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
   "order": {
     "id": "string",
     "details": {
-      "name": "Test Book",
+      "name": "Test Sample",
       "raw_authors": [
         {
-          "first_name": "Frank",
-          "last_name": "Herbert"
+          "first_name": "Default",
+          "last_name": ""
         }
       ],
       "comment": "Some comment for us",
@@ -306,7 +355,6 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
       "speaker": 214,
       "speed": 1,
       "volume": 1,
-      "isbnx": "111111111",
       "book_language": "english"
     },
     "is_completed": true,
@@ -321,7 +369,7 @@ Endpoint - [create](https://github.com/speechki-book/speechki-open-api/blob/mast
     "created": "2021-07-14T13:32:48.958Z",
     "modified": "2021-07-14T13:32:48.959Z",
     "isbnx": "111111111",
-    "type_productions": "client"
+    "type_productions": "outsource"
   },
   "transitions": [
     {
