@@ -4,7 +4,7 @@ Documentation for Speechki open API
 
 ## Hermes
 
-Integration with Speechki CRM
+Integration with Speechki Tracker
 
 [Documentation](/hermes/index.md)
 
