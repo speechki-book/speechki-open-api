@@ -76,6 +76,15 @@ This event will be sent when unexpected error ocurres on our side.
   { event: 'speechki-error', data: { detail: 'Error message' } }
 `
 
+#### speechki-ping
+
+Iframe sends this event every 30 minutes while the is active.
+
+`
+  { event: 'speechki-error', data: null }
+`
+
+
 ## Swagger Doc
 
 Up-to-date documentation for the endpoints is available at https://hermes.books.speechki.org/docs.
