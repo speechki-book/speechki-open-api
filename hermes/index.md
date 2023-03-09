@@ -81,7 +81,7 @@ This event will be sent when unexpected error ocurres on our side.
 Iframe sends this event every 30 minutes while it is active.
 
 `
-  { event: 'speechki-error', data: null }
+  { event: 'speechki-ping', data: null }
 `
 
 
