@@ -152,6 +152,13 @@ This endpoint requires:
 Speakers by customer id [endpoint](https://hermes.books.speechki.org/docs#/speech_settings.v1/get_speakers_by_customer_handler_api_v1_speech_settings_speakers_by_customer__customer_id___get).
 
 
+### Speakers tags
+
+List of tags that are used to describe the characteristics of voices.
+
+Tags [endpoint](https://hermes.books.speechki.org/docs#/speech_settings.v1/get_tags_handler_api_v1_speech_settings_tags__get)
+
+
 ### Customer flows
 
 Every customer has list of available flows, rows from this list can be used to more precisely control order creation.
