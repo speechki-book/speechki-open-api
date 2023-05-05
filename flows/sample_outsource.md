@@ -1,20 +1,18 @@
-# Sample outsource
+# Sample Outsource Workflow
 
-This flow receives a text/text file (DOCX) and returns a ready-for-download archive with audiofiles inside (audiobook format).
-Speechki editors are responsible for proofreading.
-If an error occurs, the Speechki editorial team will be notified automatically, fix the problem, and restart the process.
+This workflow streamlines the process of transforming text into ready-to-download audio files. The Speechki editorial team is responsible for proofreading and ensuring top-notch quality throughout the process. In the event of an error, the team will be notified automatically, fix the problem, and restart the process.
 
+## Workflow States:
+1. **conversion**: The system works on text formatting to optimize it for audio production.
+2. **conv_in_progress**: The text formatting process is interrupted by a technical issue, which is being resolved by the Speechki editorial team.
+3. **record**: The system records the formatted text.
+4. **record_in_progress**: The recording process is interrupted by a technical issue, which is being resolved by the Speechki editorial team.
+5. **voiced**: Audio editing is performed to enhance the quality of the recordings.
+6. **internal_check**: The audio undergoes an internal review to ensure quality and consistency.
+7. **build**: The system assembles the audio files and performs post-production tasks.
+8. **build_in_progress**: The post-production process is interrupted by a technical issue, which is being resolved by the Speechki editorial team.
+9. **order_completed**: The order is completed, and the audio files are ready for download.
 
-## States:
-- conversion (The system works on text formatting)
-- conv_in_progress (The text formatting process was interrupted by a technical issue which is being fixed by Speechki editorial team)
-- record (The system records the text)
-- record_in_progress (The recording process was interrupted by a technical issue which is being fixed by Speechki editorial team)
-- voiced (Audio editing)
-- internal_check (Internal review)
-- build (The system put together audio files and makes post-production)
-- build_in_progress (The post-production process was interrupted by a technical issue which is being fixed by Speechki editorial team)
-- order_completed (The order is completed; Files are ready to be download)
 
 
 ## Transitions:

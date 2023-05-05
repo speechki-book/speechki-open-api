@@ -11,7 +11,7 @@ If an error occurs, the Speechki editorial team will be notified automatically, 
 - record_in_progress (The recording process was interrupted by a technical issue which is being fixed by Speechki editorial team)
 - build (The system put together audiofiles and makes post-production)
 - build_in_progress (The post-production process was interrupted by a technical issue which is being fixed by Speechki editorial team)
-- order_completed (The order is completed; Files are ready to be download)
+- order_completed (The order is completed, and the audio files are ready for download.)
 
 
 ## Transitions:
