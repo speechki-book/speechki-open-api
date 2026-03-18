@@ -1,12 +1,11 @@
 # External reviewer
 
-Speechki editors are responsible for proofreading. Author are responsible for checking the results.
+Speechki editors are responsible for proofreading. Authors are responsible for checking the results.
+
+The Author has 3  rounds of corrections. Then, they have only one option - accept proof and all the corrections made.
 
 
-Author has 3  rounds of edits. After that he has one option - accept edits and move the order to "build" state.
-
-
-User have access to editor only when the order in "check" state. In this situation when you receive order details you can see field **guest_token_link** and this field is not null.
+The User has access to the editor only when the order in the "check" status. In this situation when you receive order details you can see the field called **guest_token_link** and this field is not longer null.
 
 
 ## Order Transition limit
@@ -18,23 +17,23 @@ User have access to editor only when the order in "check" state. In this situati
   `current_approval` - Optional string. Current round.
 
 
-## States:
+## Statuses:
 - approved (Text preparation)
 - ready_to_voice (Text review)
-- record (Record in progress)
-- record_in_progress (Record is broken and people are fixing it)
+- record (Recording in progress)
+- record_in_progress (Recording is broken and the Speechki team is working on it)
 - voiced (Audio editing)
 - internal_check (Internal review)
 - check (The audiobook is on the author review)
-- build (Build in progress)
-- build_in_progress (Build is broken and people are fixing it)
+- build (Final export is in progress)
+- build_in_progress (Final export is broken and the Speechki team is working it)
 - order_completed (The order is completed)
 
 
 ## Transitions:
 
 
-### Optimistic Way
+### Optimistic workflow
 
 - None -> approved
 - approved -> ready_to_voice
@@ -46,7 +45,7 @@ User have access to editor only when the order in "check" state. In this situati
 - build -> order_completed
 
 
-### Full flow
+### Full workflow
 
 - None -> approved
 - approved -> ready_to_voice
@@ -73,10 +72,10 @@ User have access to editor only when the order in "check" state. In this situati
 #### None -> approved
 
 
-It is first transition. You created order via API and our system started work on a text.
+It is first transition. You created order via API and our system started to work on a text.
 
 
-Speechki editors prepare text to record.
+Speechki editors prepare text for the recording.
 
 Actions which will be started after transition:
 
@@ -84,7 +83,7 @@ Actions which will be started after transition:
 - Conversion process
 
 
-How makes transition - automatically after order creation
+How does this transition called - automatically after order creation
 
 
 ---
